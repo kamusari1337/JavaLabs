@@ -2,8 +2,6 @@ package arrayLabs.ArraysForShoppingCartProject;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class ShoppingCart {
     private int itemCount; // общее количество товаров в корзине
@@ -23,7 +21,7 @@ public class ShoppingCart {
     public void addToCart(String itemName, double price, int quantity) {
         Item newItem = new Item(itemName, price, quantity);
         cart.add(newItem);
-        totalPrice += price;
+        totalPrice += price * quantity;
         itemCount += 1;
     }
 
@@ -32,9 +30,11 @@ public class ShoppingCart {
         NumberFormat fmt = NumberFormat.getCurrencyInstance();
         String contents = "\nКорзина\n";
         contents += "\nItem\t\tUnit Price\tQuantity\tTotal\n";
-//        for (int i = 0; i < itemCount; i++){
-//            contents += //здесь какой-то код
-//        }
+        for (int i = 0; i < itemCount; i++){
+            contents += "%s\t%s\t\t%s\t\t\t%s\n".formatted(cart.get(i).getName(),
+                    cart.get(i).getPrice(), cart.get(i).getQuantity(),
+                    cart.get(i).getPrice() * cart.get(i).getQuantity());
+        }
         contents += "\nОбщая цена: " + fmt.format(totalPrice);
         contents += "\n";
         return contents;
@@ -45,5 +45,9 @@ public class ShoppingCart {
     private void increaseSize() {
         capacity += 3;
         cart.ensureCapacity(capacity);
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
     }
 }
