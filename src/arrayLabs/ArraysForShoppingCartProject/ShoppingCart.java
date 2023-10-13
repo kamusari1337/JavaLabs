@@ -9,7 +9,7 @@ public class ShoppingCart {
     private int itemCount; // общее количество товаров в корзине
     private double totalPrice; // общая стоимость товаров в корзине
     private int capacity; // текущая вместимость тележки
-    private ArrayList<Item> cart;
+    private final ArrayList<Item> cart;
 
     // Создает пустую корзину для покупок, вмещающую 5 товаров.
     public ShoppingCart() {
@@ -21,6 +21,10 @@ public class ShoppingCart {
 
     // добавляет товар в корзину.
     public void addToCart(String itemName, double price, int quantity) {
+        Item newItem = new Item(itemName, price, quantity);
+        cart.add(newItem);
+        totalPrice += price;
+        itemCount += 1;
     }
 
     //Возвращает содержимое корзины вместе с итоговой информацией.
