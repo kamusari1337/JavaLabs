@@ -1,12 +1,12 @@
 package arrayLabs.ShoppingCartWithArrayList;
 
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shop {
     public static void main(String[] args) {
-        //Тут создайте вашу корзину cart
-        //...
+        ArrayList<Item> cart = new ArrayList<>();
         Item item;
         String itemName;
         double itemPrice;
@@ -20,13 +20,18 @@ public class Shop {
             itemPrice = scan.nextDouble();
             System.out.print("Введите количество: ");
             quantity = scan.nextInt();
-            // тут создайте новый товар и добавьте его в корзину
-            // распечатайте содержимое объекта корзины с помощью println
-            //...
-            //System.out.println(cart.toString());
+            Item newItem = new Item(itemName, itemPrice, quantity);
+            cart.add(newItem);
+
             System.out.print("Продолжать покупки (y/n)? ");
             keepShopping = scan.nextLine();
         }
         while (keepShopping.equals("y"));
+
+        double totalPrice = 0;
+        for (Item i: cart) {
+            totalPrice += i.getPrice() * i.getQuantity();
+        }
+        System.out.printf("Общая стоимость: %s", totalPrice);
     }
 }
