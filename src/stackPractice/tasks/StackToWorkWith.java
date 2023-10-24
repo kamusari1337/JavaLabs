@@ -46,4 +46,18 @@ public class StackToWorkWith {
             stack.push(temp);
         }
     }
+    public void sumEveryPair() {
+        Stack<Integer> tempStack = new Stack<>();
+        if (stack.size() % 2 != 0) {
+            stack.push(0);
+        }
+        int stack_size = stack.size()/2;
+        for (int i = 0; i < stack_size; i++) {
+            tempStack.push(stack.pop() + stack.pop());
+        }
+        stack_size = tempStack.size();
+        for (int i = 0; i < stack_size; i++) {
+            stack.push(tempStack.pop());
+        }
+    }
 }
