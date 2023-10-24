@@ -33,4 +33,17 @@ public class StackToWorkWith {
             }
         }
     }
+
+    public void everyItemTwice() {
+        Stack<Integer> tempStack = new Stack<>();
+        int stack_size = stack.size();
+        for (int i = 0; i < stack_size; i++) {
+            tempStack.push(stack.pop());
+        }
+        for (int i = 0; i < stack_size; i++) {
+            int temp = tempStack.pop();
+            stack.push(temp);
+            stack.push(temp);
+        }
+    }
 }
