@@ -24,13 +24,8 @@ public class TaskSixth {
             queue.add(stack1.pop());
         }
 
-        Stack<Double> tempStack = new Stack<>();
-        while (!stack2.isEmpty()) {
-            tempStack.push(stack2.pop());
-        }
-
-        while(!tempStack.isEmpty()) {
-            queue.add(tempStack.pop());
+         while(!stack2.isEmpty()) {
+            queue.add(stack2.pop());
         }
 
         System.out.println(queue.toString());
