@@ -12,6 +12,8 @@
 
 # Package Files #
 .idea/
+.out/
+.pdf/
 *.jar
 *.war
 *.nar
